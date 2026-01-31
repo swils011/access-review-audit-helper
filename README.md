@@ -1,32 +1,47 @@
 # Access Review & Audit Helper
 
 ## Overview
-This project demonstrates how identity data can be programmatically reviewed to support access governance, audit readiness, and least privilege enforcement.
+This project demonstrates how identity data can be programmatically reviewed to support access governance, audit readiness, and least-privilege enforcement in an enterprise environment.
 
-The scripts simulate enterprise access review workflows commonly required for SOX audits, security assessments, and periodic identity governance reviews.
+The tooling simulates access review workflows commonly required for SOX audits, security assessments, and periodic identity governance reviews.
 
-All data used is anonymized and does not represent real users.
+All data used in this repository is anonymized and does not represent real users.
+
+---
 
 ## Security Use Case
 Organizations must regularly validate that:
 - Disabled or inactive accounts are not retaining access
-- Dormant accounts are identified and remediated
-- Access reviews are repeatable and auditable
+- Dormant accounts are identified and reviewed
+- Access reviews are repeatable, consistent, and auditable
 
 This project automates those checks using PowerShell.
+
+---
 
 ## What This Project Demonstrates
 - Identity risk identification
 - Access review automation
-- Audit friendly reporting
+- Audit-friendly reporting
 - Practical PowerShell usage for security engineering
 
+---
+
 ## Scripts
+
 | Script | Purpose |
 |------|--------|
-| Get-StaleAccounts.ps1 | Identifies accounts inactive beyond a defined threshold |
-| Get-DisabledAccounts.ps1 | Surfaces disabled accounts retaining directory objects |
-| Export-AccessReview.ps1 | Produces CSV output suitable for auditors |
+| export-access-review.ps1 | Generates an audit-friendly CSV identifying disabled and dormant accounts |
 
-## Sample Output
-Sample CSV output is provided to demonstrate how results could be reviewed by security, compliance, or audit teams.
+### export-access-review.ps1
+
+Exports identity records into a consistent CSV format and flags accounts that may require review due to disabled status or extended inactivity.
+
+**Use cases:**
+- Periodic access reviews
+- Audit and compliance support
+- Least-privilege enforcement
+
+**Run example:**
+```powershell
+pwsh ./scripts/export-access-review.ps1
