@@ -31,7 +31,7 @@ This project automates those checks using PowerShell.
 
 | Script | Purpose |
 |------|--------|
-| export-access-review.ps1 | Generates an audit-friendly CSV identifying disabled and dormant accounts |
+| export-access-review.ps1 | Generates an audit ready CSV that surfaces identity risk and supports repeatable access reviews without manual investigation |
 
 ### export-access-review.ps1
 
@@ -45,3 +45,21 @@ Exports identity records into a consistent CSV format and flags accounts that ma
 **Run example:**
 ```powershell
 pwsh ./scripts/export-access-review.ps1
+
+## Sample Output
+
+After running the script, the project generates an audit friendly CSV:
+
+`output/access-review-results.csv`
+
+Example rows:
+
+| UserPrincipalName         | Enabled | LastLogonDate | DaysInactive | RiskFlag         |
+|---------------------------|---------|---------------|-------------:|------------------|
+| alex.jordan@example.com   | TRUE    | 12/10/2025    | 52           | No Risk          |
+| taylor.morgan@example.com | FALSE   | 6/1/2024      | 609          | Disabled Account |
+| jamie.lee@example.com     | TRUE    | 8/15/2024     | 534          | Dormant Account  |
+
+Screenshot from a test run:
+
+![Sample output](docs/screenshots/access-review-results.png)
