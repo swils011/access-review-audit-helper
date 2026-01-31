@@ -1,0 +1,10 @@
+# Ignore output files
+output/
+*.csv
+
+# Ignore local environment files
+*.env
+*.log
+
+# Ignore PowerShell temp files
+*.ps1xml
